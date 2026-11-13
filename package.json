@@ -9,8 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "@langchain/core": "^1.4.0",
+    "@langchain/pinecone": "^1.0.3",
+    "@langchain/textsplitters": "^1.0.2",
+    "@pinecone-database/pinecone": "^5.1.2",
     "lucide-react": "^1.72.0",
     "next": "16.4.6",
+    "pdf-parse": "^2.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -22,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

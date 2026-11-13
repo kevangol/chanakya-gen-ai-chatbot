@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# RAG source documents (ingested locally into Pinecone; not committed)
+/docs/*
+!/docs/.gitkeep
