@@ -8,6 +8,8 @@
  */
 
 import { useState } from "react";
+import { ChanakyaMascot } from "../mascot/ChanakyaMascot";
+import type { MascotMood } from "../mascot/ChanakyaFigure";
 import { Sidebar } from "../sidebar/Sidebar";
 import { ChatHeader } from "./ChatHeader";
 import { Composer } from "./Composer";
@@ -27,6 +29,9 @@ import { APP_NAME } from "@/app/lib/constants";
  * - {@link useSidebar} — sidebar visibility
  * - local `input` — composer text, shared by the welcome and docked composers
  *
+ * The {@link ChanakyaMascot} mood follows the stream: `thinking` until the first
+ * token arrives, `speaking` while text streams, `idle` otherwise.
+ *
  * Shows {@link Welcome} when the open conversation is empty (or none is
  * open), otherwise {@link MessageList} with a docked {@link Composer}.
  *
@@ -41,6 +46,8 @@ export function Chat() {
   const [input, setInput] = useState("");
 
   const messages = store.active?.messages ?? [];
+  const lastMessage = messages.at(-1);
+  const mascotMood: MascotMood = !chat.isStreaming ? "idle" : lastMessage?.content ? "speaking" : "thinking";
 
   /** Send `text` and clear the composer (no-op while a reply is streaming). */
   const handleSend = (text: string) => {
@@ -105,6 +112,7 @@ export function Chat() {
         )}
       </main>
 
+      <ChanakyaMascot mood={mascotMood} />
     </div>
   );
 }
